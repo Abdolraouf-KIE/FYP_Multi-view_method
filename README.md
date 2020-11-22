@@ -63,7 +63,7 @@ Traditional techniques make use of iterations and this manner is very slow where
 Sem 1
 
 - [x] Breadth Background
-- [ ] Utilize a platform for initial solution to finish something for the "work done so far" and list down neccessary things need to learn.
+- [ ] *(inprogress)* Utilize a platform for initial solution to finish something for the "work done so far" and list down neccessary things need to learn.
 - [ ] Depth litreture review
 
 Sem2
