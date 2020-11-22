@@ -57,3 +57,15 @@ Traditional techniques make use of iterations and this manner is very slow where
 - Determine an evaluation metric and method for the registration.
 - Set desired accuracy for model.
 - Carryout registration of (pre-segmented) face
+
+
+# Overall Plan
+Sem 1
+
+- [x] Breadth Background
+- [ ] Utilize a platform for initial solution to finish something for the "work done so far" and list down neccessary things need to learn.
+- [ ] Depth litreture review
+
+Sem2
+
+- [ ] Iterative development process as well as more litriture review
