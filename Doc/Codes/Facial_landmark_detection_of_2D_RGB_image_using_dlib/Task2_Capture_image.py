@@ -1,58 +1,37 @@
-# import the necessary packages
-from imutils import face_utils
-import numpy as np
-import argparse
-import imutils
-import dlib
-import cv2
+# /home/raouf/Documents/Tools/Slicer-4.11.20200930-linux-amd64/bin/PythonSlicer
+#exec(open("/home/raouf/Documents/UM/SEM5/FYP/MLRegistration/Doc/Codes/Facial_landmark_detection_of_2D_RGB_image_using_dlib/Task2_Capture_image.py").read())
+import sys
+import os
 
-# construct the argument parser and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-p", "--shape-predictor", required=True,
-	help="path to facial landmark predictor")
-ap.add_argument("-i", "--image", required=True,
-	help="path to input image")
-args = vars(ap.parse_args())
+# having the node as variable for manipulation #TODO find a way to automatically load the first model and then load and manipulate the others.
+# masterVolumeNode=getNode('3: VOLUMETRIC AXIAL_4')
 
-# initialize dlib's face detector (HOG-based) and then create
-# the facial landmark predictor
-detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor(args["shape_predictor"])
+# center the 3d view
+layoutManager = slicer.app.layoutManager()
+threeDWidget = layoutManager.threeDWidget(0)
+threeDView = threeDWidget.threeDView()
+threeDView.resetFocalPoint()
 
-# load the input image, resize it, and convert it to grayscale
-image = cv2.imread(args["image"])
-image = imutils.resize(image, width=500)
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+# Rotate the 3d view
+layoutManager = slicer.app.layoutManager()
+threeDWidget = layoutManager.threeDWidget(0)
+threeDView = threeDWidget.threeDView()
+# threeDView.yaw()
 
-# detect faces in the grayscale image
-rects = detector(gray, 1)
+# position the camera infront of the face:
+view = layoutManager.threeDWidget(0).threeDView() #the zero is the index of the first camera/threeDview
+threeDViewNode = view.mrmlViewNode()
+cameraNode = slicer.modules.cameras.logic().GetViewActiveCameraNode(threeDViewNode)
+cameraNode.SetPosition(0,400,0)
 
-# loop over the face detections
-for (i, rect) in enumerate(rects):
-	# determine the facial landmarks for the face region, then
-	# convert the facial landmark (x, y)-coordinates to a NumPy
-	# array
-	shape = predictor(gray, rect)
-	shape = face_utils.shape_to_np(shape)
-
-	# convert dlib's rectangle to a OpenCV-style bounding box
-	# [i.e., (x, y, w, h)], then draw the face bounding box
-	(x, y, w, h) = face_utils.rect_to_bb(rect)
-	cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-	# show the face number
-	cv2.putText(image, "Face #{}".format(i + 1), (x - 10, y - 10),
-		cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-	
-	# loop over the (x, y)-coordinates for the facial landmarks
-	# and draw them on the image
-	for (x, y) in shape:
-		cv2.circle(image, (x, y), 3, (0, 0, 255), -1)
-
-# show the output image with the face detections + facial landmarks
-cv2.imshow("Output", image)
-#cv2.imshow("output",gray)
-cv2.waitKey(0)
-
-#example code : python facial_landmarks.py --shape-predictor Data/Model_Predictor/shape_predictor_68_face_landmarks.dat --image Data/imgs/Test4.png
+#capture the scene view
+renderWindow = slicer.app.layoutManager().threeDWidget(0).threeDView().renderWindow()
+renderWindow.SetAlphaBitPlanes(1)
+wti = vtk.vtkWindowToImageFilter()
+wti.SetInputBufferTypeToRGBA()
+wti.SetInput(renderWindow)
+writer = vtk.vtkPNGWriter()
+writer.SetFileName("/home/raouf/Documents/UM/SEM5/FYP/MLRegistration/Doc/Codes/Facial_landmark_detection_of_2D_RGB_image_using_dlib/Data/imgs/screenshot.png")
+writer.SetInputConnection(wti.GetOutputPort())
+writer.Write()
 
