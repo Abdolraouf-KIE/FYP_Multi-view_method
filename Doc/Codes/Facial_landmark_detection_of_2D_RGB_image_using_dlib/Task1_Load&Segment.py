@@ -1,5 +1,6 @@
-# /home/raouf/Documents/Tools/Slicer-4.11.20200930-linux-amd64/bin/PythonSlicer
-#exec(open("/home/raouf/Documents/UM/SEM5/FYP/MLRegistration/Doc/Codes/Facial_landmark_detection_of_2D_RGB_image_using_dlib/Task2_Capture_image.py").read())
+# location of Python Slicer interpreter:    /home/raouf/Documents/Tools/Slicer-4.11.20200930-linux-amd64/bin/PythonSlicer
+#To execute this script copy the code below into 3D Slicer python interpreter: (replace the address with absolute path of the script you want to run)
+# exec(open("/home/raouf/Documents/UM/SEM5/FYP/MLRegistration/Doc/Codes/Facial_landmark_detection_of_2D_RGB_image_using_dlib/Task2_Capture_image.py").read())
 import sys
 import os
 
