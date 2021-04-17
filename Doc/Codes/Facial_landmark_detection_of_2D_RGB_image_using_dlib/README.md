@@ -5,7 +5,7 @@ The 2D method is made up of 4 major tasks:
 1. **Task1_Load&Segment:** loading dicom flies and then automatically segmenting them. The result is a model in the scene. 
 2. **Task2_Capture_image_3DSlicer:** Capture an image of the viewpoert and save it inside a folder. Camera mipulation must be done before capturing image.
 3. **Task2_b_Capture_iamge_Bledner:** Capture an image of the viewport of blender and save it inside a folder. Camera mipulation must be done before capturing image.
-4. **Task3_facial_landmarks:** take an image and find the landmarks on face. landmarks are savedas an array of [x,y]
+4. **Task3_facial_landmarks:** take an image and find the landmarks on face. landmarks are savedas an array of [x,y]. Uses venv
 5. **Task4: proejct_landmarks** takes an x and y value (of the display/viewport) and finds the corresponding 3D point in 3D slicer. At this point a fiducial is placed.
 
 Each of the tasks will have thier own .py file and they are tested seperatly by copying the codes in the file into the python interpreter of 3DSlcier. For future use a full script can be developed to be run using "Slicer -c ./script.py" in ubuntu without having to open the slicer software.
@@ -43,6 +43,10 @@ Camera Manipulation:
 Capture:
 - https://github.com/Slicer/Slicer/blob/master/Modules/Scripted/ScreenCapture/ScreenCapture.py
 - https://www.slicer.org/wiki/Documentation/Nightly/ScriptRepository#Capture
+
+## Task3: Facial Landamrk detection
+
+This sectioin uses virtual environment with dlib to obtain the landmarks.
 
 ## Task4: projection of landmarks
 
