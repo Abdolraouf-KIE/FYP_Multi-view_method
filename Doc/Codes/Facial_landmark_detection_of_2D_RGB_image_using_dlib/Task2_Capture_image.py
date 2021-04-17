@@ -1,5 +1,6 @@
 # /home/raouf/Documents/Tools/Slicer-4.11.20200930-linux-amd64/bin/PythonSlicer
 #exec(open("/home/raouf/Documents/UM/SEM5/FYP/MLRegistration/Doc/Codes/Facial_landmark_detection_of_2D_RGB_image_using_dlib/Task2_Capture_image.py").read())
+
 import sys
 import os
 
@@ -22,7 +23,8 @@ threeDView = threeDWidget.threeDView()
 view = layoutManager.threeDWidget(0).threeDView() #the zero is the index of the first camera/threeDview
 threeDViewNode = view.mrmlViewNode()
 cameraNode = slicer.modules.cameras.logic().GetViewActiveCameraNode(threeDViewNode)
-cameraNode.SetPosition(0,400,0)
+cameraNode.SetPosition(0,500,0)
+
 
 #capture the scene view
 renderWindow = slicer.app.layoutManager().threeDWidget(0).threeDView().renderWindow()
