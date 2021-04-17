@@ -65,3 +65,13 @@ if markupsNode.GetNumberOfFiducials() == 0:
 # The mouse is used to obtain the ras coordinates. The library above handels such a thing and it uses modeldisplayablemanager
 # The annotation module has two functions: GetDisplayToWorldCoordinates() and OnClickInRenderWindowGetCoordinates (). both manipulate the y value with respect to the window height
 
+{References:
+Main picker library: (several suitbale functions such as vtk pickers as well as Pick() function)
+https://github.com/Slicer/Slicer/blob/master/Libs/MRML/DisplayableManager/vtkMRMLModelDisplayableManager.cxx
+
+Another node that makes use of the library:
+https://github.com/Slicer/Slicer/blob/08789e8f2224f89206b2d6a49d1d452d4e677994/Modules/Loadable/Annotations/MRMLDM/vtkMRMLAnnotationDisplayableManager.cxx 
+
+Discourse 3DSlicer (fiducial projection):
+https://discourse.slicer.org/t/how-to-create-a-fiducial-though-the-pixel-not-the-mouse-event/11410/2
+}

@@ -189,7 +189,7 @@ with DICOMUtils.TemporaryDICOMDatabase() as db:
   for patientUID in patientUIDs:
     loadedNodeIDs.extend(DICOMUtils.loadPatientByUID(patientUID))
 
-# having the node as variable for manipulation #TODO find a way to automatically load the first model and then load and manipulate the others.
+# having the node as variable for manipulation #TODO find a way to automatically load the first model and then load and manipulate the rest.
 masterVolumeNode=getNode('3: VOLUMETRIC AXIAL_4')
 
 skinSeg(masterVolumeNode);

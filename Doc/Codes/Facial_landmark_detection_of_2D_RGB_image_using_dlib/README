@@ -1,3 +1,0 @@
-source facial_landmark_py3/bin/activate
-python facial_landmarks.py --shape-predictor Data/Model_Predictor/shape_predictor_68_face_landmarks.dat --image Data/imgs/Test4.png
-
